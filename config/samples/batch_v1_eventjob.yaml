@@ -1,0 +1,22 @@
+apiVersion: batch.kitagry.github.io/v1
+kind: EventJob
+metadata:
+  name: eventjob-sample
+spec:
+  trigger:
+    apiVersion: batch/v1
+    kind: CronJob
+    name: hello
+    type: Complete
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: hello-event-job
+            image: busybox
+            command:
+            - /bin/sh
+            - -c
+            - sleep 120s && echo "Hello World"
+          restartPolicy: OnFailure

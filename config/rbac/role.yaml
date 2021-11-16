@@ -1,0 +1,42 @@
+
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: null
+  name: manager-role
+rules:
+- apiGroups:
+  - batch.kitagry.github.io
+  resources:
+  - eventjobs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - batch.kitagry.github.io
+  resources:
+  - eventjobs/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - batch.kitagry.github.io
+  resources:
+  - eventjobs/status
+  verbs:
+  - get
+  - patch
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - events
+  verbs:
+  - get
+  - list
+  - watch

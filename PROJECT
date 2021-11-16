@@ -1,0 +1,16 @@
+domain: kitagry.github.io
+layout:
+- go.kubebuilder.io/v3
+projectName: eventjob
+repo: github.com/kitagry/eventjob
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: kitagry.github.io
+  group: batch
+  kind: EventJob
+  path: github.com/kitagry/eventjob/api/v1
+  version: v1
+version: "3"
