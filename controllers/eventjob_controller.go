@@ -190,7 +190,7 @@ func (r *EventJobReconciler) SetupWithManager(mgr ctrl.Manager) error {
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&batchv1.EventJob{}, notReconcileOption).
 		Owns(&k8sbatchv1.Job{}, notReconcileOption).
-		Watches(&source.Kind{Type: &corev1.Event{}}, handler.EnqueueRequestsFromMapFunc(r.findObjectsForEvent), builder.WithPredicates(predicate.ResourceVersionChangedPredicate{})).
+		Watches(&source.Kind{Type: &corev1.Event{}}, handler.EnqueueRequestsFromMapFunc(r.findObjectsForEvent)).
 		Complete(r)
 }
 
